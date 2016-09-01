@@ -1,14 +1,8 @@
-# Starter for Express, React, Redux, SCSS applications
+# Camping Diary App
 
-## Features
+## Initial seed project based on DimitriMikadze's Express / React / Redux starter
 
-- Webpack development and production environment configuration
-- Webpack SCSS configuration
-- React Hot loader
-- React Router configuration
-- React, Redux configuration
-- Testing environment configured with Mocha and Chai
-- Linting with Airbnb eslint configuration
+- https://github.com/DimitriMikadze/express-react-redux-starter.git
 
 ## Getting Started
 
