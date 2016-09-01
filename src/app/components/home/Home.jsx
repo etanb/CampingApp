@@ -7,14 +7,13 @@ import * as actions from '../../actions';
 var Home = React.createClass({
 	handleInputAreaChange: function(text) {
 		var reqType = {
-			method:"GET"
-		};
+				method:"GET"
+			},
+			recreationApiKey = process.env.RECREATION_KEY;
 
-		fetch("https://ridb.recreation.gov/api/v1/facilities?&query=" + text + "&apikey=0FEEA340A2F4484A927E0DE201A97F80", reqType).then((response) => {
+		fetch("https://ridb.recreation.gov/api/v1/facilities?&query=" + text + "&apikey=" + recreationApiKey, reqType).then((response) => {
 			return response.json()
-		}).then((data) => {
-			debugger;
-		}).then((parsedData) => {
+		}).then(function(data) {
 			debugger;
 		})
 	},

@@ -30,7 +30,8 @@ module.exports = (options) => {
     plugins: [
       new Webpack.DefinePlugin({
         'process.env': {
-          NODE_ENV: JSON.stringify(options.isProduction ? 'production' : 'development'),
+          'NODE_ENV': JSON.stringify(options.isProduction ? 'production' : 'development'),
+          'RECREATION_KEY': JSON.stringify(process.env.RECREATION_KEY)
         },
       }),
       new HtmlWebpackPlugin({

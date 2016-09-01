@@ -68,6 +68,7 @@
     "redux-thunk": "^1.0.3",
     "xml2js": "latest",
     "file-loader": "latest",
-    "axios": "latest"
+    "axios": "latest",
+    "envs": "latest"
   }
 }
