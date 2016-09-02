@@ -67,11 +67,11 @@ if you don't want to use pm2, just change pm2 with node in package.json file in 
 
 ### Upcoming features
 
-- Search Recreation areas and/or Facility areas
 - Review each area with a star rating system
 - Commenting system on each area for tips
 - User accounts
 - Ability to save personal notes on each area
+- Usage of http://www.transitandtrails.org/api for all text information and Google Custom Search API for images
 
 ### Contributing
 
