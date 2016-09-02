@@ -3,18 +3,19 @@ import React from 'react';
 var Searchbar = React.createClass({
 	handleUserInput(event) {
 		event.preventDefault();
-		var userInput = document.getElementsByClassName('campgroundInput')[0].value;
+		var userInput = document.getElementsByClassName('campground-input')[0].value;
 		this.props.handleInputAreaChange(userInput);
 	},
 
 	render: function() {
 	  return (
-	    <div className="container searchbar">
-		    <form onSubmit={this.handleUserInput} className="commentForm">
-		    	<input className="campgroundInput" type="text" />
-		    	<button type="button" onClick={this.handleUserInput}>Submit</button>
-		    </form>
-	    </div>
+		<form className="form-inline" onSubmit={this.handleUserInput}>
+		    <div className="form-group">
+		    	<input className="campground-input" type="text" placeholder="Search nature here..." />
+		    </div>
+		    <button type="submit" className="btn btn-primary search-button" onClick={this.handleUserInput}><span className="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+		</form>
+	    
 	  );
 	}
 })

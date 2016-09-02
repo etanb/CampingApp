@@ -1,0 +1,38 @@
+.campground-input {
+	border: none;
+    background-color: transparent;
+    animation: blink-empty 1s infinite;
+    border-left: transparent solid 1px;
+    margin:5px;
+    color: #ebebeb;
+    height: 70px;
+    font-size: 70px;
+}
+
+@keyframes blink-empty {
+  50% {border-left: 1px solid #ebebeb;}
+}
+
+.search-button {
+	background: none;
+	font-size: 40px;
+}
+
+.search-button:hover {
+	background: none;
+}
+
+.responses {
+    margin-top: 75px;
+}
+
+.search-result-img, .search-result-text{
+    display: inline-block;
+    margin: 10px;
+}
+
+.search-result-img {
+    height: 60px;
+    width: 60px;
+    border-radius: 50px;
+}

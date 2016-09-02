@@ -59,7 +59,7 @@ var Home = React.createClass({
 
 	render: function() {
 		return (
-	    <div>
+	    <div className="results-container">
 	      <Searchbar handleInputAreaChange={this.handleInputAreaChange} />
 	      <Searchresultlist searchResults={this.state.searchResults} noResultsString={this.state.noResultsString}/>
 	    </div>

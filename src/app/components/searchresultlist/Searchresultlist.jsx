@@ -16,7 +16,7 @@ var Searchresultlist = React.createClass({
 		}
 
 	  return (
-	    <div className="result-container">
+	    <div className="responses">
 	    	{ resultDisplay }
 	    </div>
 	  );
