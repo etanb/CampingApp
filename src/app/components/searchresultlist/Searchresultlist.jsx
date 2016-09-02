@@ -8,7 +8,9 @@ var Searchresultlist = React.createClass({
 
 		if(this.props.searchResults.length) {
 			resultDisplay = this.props.searchResults.map( function(result, index) {
-				return <Searchresult key={index} facilityName={result.FacilityName} />
+				debugger;
+				var mainFacilityImg = result.FacilityImages.length ? result.FacilityImages[0].URL : "https://ridb.recreation.gov/assets/img/partners/blm.png";
+				return <Searchresult key={index} facilityName={result.FacilityName} mainFacilityImg={mainFacilityImg}/>
 			})
 		} else {
 			resultDisplay = <Emptyresult noResultsString={this.props.noResultsString} />

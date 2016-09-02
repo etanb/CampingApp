@@ -65,6 +65,14 @@ npm run start
 Note: I'm using pm2 for production server, you should install it on server via 'npm install pm2 -g'.
 if you don't want to use pm2, just change pm2 with node in package.json file in scripts section.
 
+### Upcoming features
+
+- Search Recreation areas and/or Facility areas
+- Review each area with a star rating system
+- Commenting system on each area for tips
+- User accounts
+- Ability to save personal notes on each area
+
 ### Contributing
 
 contributions are welcome!

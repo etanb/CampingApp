@@ -19,21 +19,41 @@ var Home = React.createClass({
 			},
 			recreationApiKey = process.env.RECREATION_KEY,
 			componentContext = this;
-//API call to the Recreation Information Database facilities list. Limit results to ten. 
-		fetch("https://ridb.recreation.gov/api/v1/facilities?&limit=10&query=" + text + "&apikey=" + recreationApiKey, reqType).then(function(response) {
+//API call to the Recreation Information Database facilities list. Limit results to six. 
+		fetch("https://ridb.recreation.gov/api/v1/facilities?&limit=6&query=" + text + "&apikey=" + recreationApiKey, reqType).then(function(response) {
 			return response.json()
 		}).then(function(data) {
 			var resultArray = data.RECDATA;
 
 			if(resultArray.length) {
-				componentContext.setState({searchResults: resultArray})
+				return resultArray
 			} else {
 				componentContext.setState({
 					searchResults: [],
 					noResultsString: "Sorry, your search returned no results. Please try again."
 				})
 			}
-			// Need to add image API search https://ridb.recreation.gov/api/v1/facilities/{facilityID}/media/
+		}).then(function(resultArray) {
+			var totalResults = resultArray.length,
+				completedRequests = 0;
+
+			resultArray.forEach( function(facilityResult) {
+				var currentResult = facilityResult;
+				
+				fetch("https://ridb.recreation.gov/api/v1/facilities/" + facilityResult.FacilityID + "/media?" + "&apikey=" + recreationApiKey, reqType).then(function(facility){
+					
+					return facility.json()
+				}).then(function(facilityResponse){
+					currentResult["FacilityImages"] = facilityResponse.RECDATA
+					completedRequests++
+
+					return resultArray
+				}).then(function(updatedArray){
+					if(completedRequests === totalResults) {
+						componentContext.setState({searchResults: updatedArray})
+					}
+				})
+			})
 		})
 	},
 
