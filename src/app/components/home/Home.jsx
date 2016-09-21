@@ -13,28 +13,32 @@ var Home = React.createClass({
 	    }
 	},
 
-	handleInputAreaChange: function(text) {
+	handleInputAreaChange: function(text) {		
 		var reqType = {
 				method:"GET"
 			},
 			recreationApiKey = process.env.RECREATION_KEY,
 			componentContext = this;
+
+			componentContext.setState({
+				isLoading: true
+			})
+
 //API call to the Recreation Information Database facilities list. Limit results to six. 
 		fetch("https://ridb.recreation.gov/api/v1/facilities?&limit=6&query=" + text + "&apikey=" + recreationApiKey, reqType).then(function(response) {
 			return response.json()
 		}).then(function(data) {
-			var resultArray = data.RECDATA;
-
-			if(resultArray.length) {
-				return resultArray
-			} else {
+			if (!data.RECDATA.length) {
 				componentContext.setState({
 					searchResults: [],
-					noResultsString: "Sorry, your search returned no results. Please try again."
+					noResultsString: "Sorry, your search returned no results. Please try again.",
+					isLoading: false
 				})
-			}
-		}).then(function(resultArray) {
-			var totalResults = resultArray.length,
+				return 
+			} 
+			
+			var resultArray = data.RECDATA,
+				totalResults = resultArray.length,
 				completedRequests = 0;
 
 			resultArray.forEach( function(facilityResult) {
@@ -50,7 +54,9 @@ var Home = React.createClass({
 					return resultArray
 				}).then(function(updatedArray){
 					if(completedRequests === totalResults) {
-						componentContext.setState({searchResults: updatedArray})
+						componentContext.setState({searchResults: updatedArray,
+												   isLoading: false
+												})
 					}
 				})
 			})
@@ -61,7 +67,7 @@ var Home = React.createClass({
 		return (
 	    <div className="results-container">
 	      <Searchbar handleInputAreaChange={this.handleInputAreaChange} />
-	      <Searchresultlist searchResults={this.state.searchResults} noResultsString={this.state.noResultsString}/>
+	      <Searchresultlist searchResults={this.state.searchResults} noResultsString={this.state.noResultsString} isLoading={this.state.isLoading} />
 	    </div>
 	  );
 	}

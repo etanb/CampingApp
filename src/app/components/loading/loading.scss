@@ -1,0 +1,46 @@
+.loading-container {
+  width: 100%;
+  position: absolute;
+  text-align: center;
+}
+
+.loading-container .indicator {
+  height: 20px;
+  width: 20px;
+  background-color: blue;
+  border-radius: 100px;
+  display: inline-block;
+  position: absolute;
+}
+
+.loading-container .indicator-one {
+  margin-left: 0px;
+  -webkit-animation: indicator-one-animation 4s infinite; /* Safari 4+ */
+  -moz-animation:    indicator-one-animation 4s infinite; /* Fx 5+ */
+  -o-animation:      indicator-one-animation 4s infinite; /* Opera 12+ */
+  animation:         indicator-one-animation 4s infinite; /* IE 10+, Fx 29+ */
+}
+
+@keyframes indicator-one-animation {
+  33% {
+    margin-left: 50px;
+  }
+}
+
+.loading-container .indicator-two {
+  margin-left: 25px;
+    -webkit-animation: indicator-two-animation 4s infinite; /* Safari 4+ */
+  -moz-animation:    indicator-two-animation 4s infinite; /* Fx 5+ */
+  -o-animation:      indicator-two-animation 4s sinfinite; /* Opera 12+ */
+  animation:         indicator-two-animation 4s sinfinite; /* IE 10+, Fx 29+ */
+}
+
+@keyframes indicator-two-animation {
+  33% {
+    margin-left: 50px;
+  }
+}
+
+.loading-container .indicator-three {
+  margin-left: 50px;
+}
